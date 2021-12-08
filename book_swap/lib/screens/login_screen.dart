@@ -57,7 +57,8 @@ class MyLoginScreen extends StatelessWidget {
           password(
             onChanged: (value) {},
           ),
-          Roundedbutton(text: "Login", press: () {}),
+          Roundedbutton(text: "Sign In", press: () {}),
+          
           signupbutton(
             press: () {
               //Navigator.push(context, route)

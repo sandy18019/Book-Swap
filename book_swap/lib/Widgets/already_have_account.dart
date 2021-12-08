@@ -18,18 +18,18 @@ class signupbutton extends StatefulWidget {
 class _signupbuttonState extends State<signupbutton> {
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       // ignore: prefer_const_literals_to_create_immutables
       children: <Widget>[
         Text(
-          widget.login ?"Don't have an account yet?" : "Already have an account",
-          style: TextStyle(color: Colors.white),
+          widget.login ?"New to BookSwap?" : "Already have an account",
+          style: TextStyle(color: Colors.white, fontSize: 25, ),
         ),
         GestureDetector(
           onTap: (){},
           child: Text(
-            widget.login? "Sign Up":"Sign In",
+            widget.login? "Create your account now":"Sign In",
             style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
           ),
         )
