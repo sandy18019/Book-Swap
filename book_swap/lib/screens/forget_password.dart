@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class forgetpassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -11,14 +10,24 @@ class forgetpassword extends StatelessWidget {
   }
 }
 
-class myforgetpassword extends StatelessWidget{
+class myforgetpassword extends StatelessWidget {
   const myforgetpassword({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-   return SingleChildScrollView(
-     
-   )
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          SizedBox(height: 100),
+          Align(
+            alignment: Alignment.center,
+            child: Stack(
+              children: [
+                
+              ],),
+          )
+        ],
+      ),
+    );
   }
-
 }

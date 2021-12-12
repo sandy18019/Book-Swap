@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
-
-// ignore: camel_case_types
 class signupbutton extends StatefulWidget {
   final bool login;
   final Function press;
   const signupbutton({
-    Key? key, 
-    this.login = true, 
+    Key? key,
+    this.login = true,
     required this.press,
   }) : super(key: key);
 
@@ -16,6 +14,8 @@ class signupbutton extends StatefulWidget {
 }
 
 class _signupbuttonState extends State<signupbutton> {
+//  get login => true;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -23,14 +23,20 @@ class _signupbuttonState extends State<signupbutton> {
       // ignore: prefer_const_literals_to_create_immutables
       children: <Widget>[
         Text(
-          widget.login ?"New to BookSwap?" : "Already have an account",
-          style: TextStyle(color: Colors.white, fontSize: 25, ),
+          widget.login ? "New to BookSwap?" : "Already have an account",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 25,
+          ),
         ),
         GestureDetector(
-          onTap: (){},
+          onTap: () {
+            Navigator.pushNamed(context, '/signup');
+          },
           child: Text(
-            widget.login? "Create your account now":"Sign In",
-            style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
+            widget.login ? "Create your account now" : "Sign In",
+            style: TextStyle(
+                color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
           ),
         )
       ],

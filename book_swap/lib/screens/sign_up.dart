@@ -1,6 +1,8 @@
+import 'package:book_swap/Widgets/already_have_account.dart';
 import 'package:book_swap/Widgets/button.dart';
 import 'package:book_swap/Widgets/password.dart';
 import 'package:book_swap/Widgets/rounded_input_field.dart';
+import 'package:book_swap/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class signupScreen extends StatelessWidget {
@@ -24,7 +26,7 @@ class MySignupScreen extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          SizedBox(height: 100),
+          SizedBox(height: 60),
           Align(
             alignment: Alignment.topCenter,
             child: Stack(children: [
@@ -64,6 +66,19 @@ class MySignupScreen extends StatelessWidget {
             onChanged: (value) {},
           ),
           Roundedbutton(text: "Sign up", press: () {}),
+          signupbutton(
+            login: false,
+            press: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return MyLoginScreen();
+                  },
+                ),
+              );
+            },
+          )
         ],
       ),
     );

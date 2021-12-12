@@ -3,6 +3,7 @@ import 'package:book_swap/Widgets/button.dart';
 import 'package:book_swap/Widgets/password.dart';
 import 'package:book_swap/Widgets/rounded_input_field.dart';
 import 'package:book_swap/Widgets/text_field_container.dart';
+import 'package:book_swap/screens/sign_up.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -58,10 +59,16 @@ class MyLoginScreen extends StatelessWidget {
             onChanged: (value) {},
           ),
           Roundedbutton(text: "Sign In", press: () {}),
-          
           signupbutton(
             press: () {
-              //Navigator.push(context, route)
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return MySignupScreen();
+                  },
+                ),
+              );
             },
           )
         ],
