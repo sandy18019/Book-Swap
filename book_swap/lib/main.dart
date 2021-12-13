@@ -1,8 +1,7 @@
 // ignore_for_file: prefer_const_constructors, duplicate_ignore
 
-import 'package:book_swap/screens/forget_password.dart';
 import 'package:book_swap/screens/login_screen.dart';
-import 'package:book_swap/screens/sign_up.dart';
+import 'package:book_swap/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,7 +15,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => LoginScreen(),
-        '/signup': (context) => signupScreen(),
+        '/signup': (context) => SignupScreen(),
         //'/forgetpassword':(context) => forgetpassword(),
       },
     );
