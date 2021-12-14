@@ -1,4 +1,4 @@
-class BooksModel {
+/*class BooksModel {
   String title, author, price, image, description;
   int color;
 
@@ -85,3 +85,4 @@ var BookData = [
     "description": "short description about the book here......."
   },
 ];
+*/
