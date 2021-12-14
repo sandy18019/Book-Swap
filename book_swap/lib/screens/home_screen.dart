@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutterbookapp/constants/color_constant.dart';
-import 'package:flutterbookapp/models/new_model.dart';
-import 'package:flutterbookapp/models/books_model.dart';
-import 'package:flutterbookapp/screens/selected_book_screen.dart';
+import 'package:book_swap/constants/color_constant.dart';
+import 'package:book_swap/models/new_model.dart';
+import 'package:book_swap/models/books_model.dart';
+import 'package:book_swap/screens/selected_book_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatefulWidget {

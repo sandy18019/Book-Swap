@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutterbookapp/models/books_model.dart';
+import 'package:book_swap/models/books_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SelectedBookScreen extends StatelessWidget {
   final BooksModel BookModel;
 
-  SelectedBookScreen({Key key, @required this.BookModel});
+  SelectedBookScreen({required this.BookModel, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

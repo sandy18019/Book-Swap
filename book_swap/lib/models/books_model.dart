@@ -1,4 +1,4 @@
-/*class BooksModel {
+class BooksModel {
   String title, author, price, image, description;
   int color;
 
@@ -6,10 +6,13 @@
       this.description);
 }
 
-List<BooksModel> books = BookData
-    .map((item) => BooksModel(item['title'], item['author'],
-        item['price'], item['image'], item['color'], item['description']))
-    .toList();
+List<BooksModel> books = BookData.map((item) => BooksModel(
+    item['title'],
+    item['author'],
+    item['price'],
+    item['image'],
+    item['color'],
+    item['description'])).toList();
 
 var BookData = [
   {
@@ -85,4 +88,3 @@ var BookData = [
     "description": "short description about the book here......."
   },
 ];
-*/
