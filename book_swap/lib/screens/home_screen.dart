@@ -3,7 +3,6 @@ import 'package:book_swap/constants/color_constant.dart';
 import 'package:book_swap/models/new_model.dart';
 import 'package:book_swap/models/books_model.dart';
 import 'package:book_swap/screens/selected_book_screen.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -26,16 +25,18 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: <Widget>[
                       Text(
                         'hello UserName',
-                        style: GoogleFonts.openSans(
+                        style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
+                            fontFamily: 'RacingSansOne',
                             color: Colors.grey),
                       ),
                       Text(
                         'Main Library',
-                        style: GoogleFonts.openSans(
+                        style: TextStyle(
                             fontSize: 22,
                             fontWeight: FontWeight.w600,
+                            fontFamily: 'RacingSansOne',
                             color: Colors.black),
                       ),
                     ],
@@ -49,19 +50,23 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Stack(
                   children: <Widget>[
                     TextField(
-                      style: GoogleFonts.openSans(
-                          fontSize: 12,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w600),
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'RacingSansOne',
+                      ),
                       decoration: InputDecoration(
                           contentPadding:
                               EdgeInsets.only(left: 19, right: 50, bottom: 8),
                           border: InputBorder.none,
                           hintText: 'Search for books',
-                          hintStyle: GoogleFonts.openSans(
-                              fontSize: 12,
-                              color: Colors.grey,
-                              fontWeight: FontWeight.w600)),
+                          hintStyle: TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'RacingSansOne',
+                          )),
                     ),
                     Positioned(
                       top: 3,
@@ -79,10 +84,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: EdgeInsets.only(left: 25, top: 25),
                 child: Text(
                   'New',
-                  style: GoogleFonts.openSans(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black),
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                    fontFamily: 'RacingSansOne',
+                  ),
                 ),
               ),
               Container(
@@ -110,10 +117,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: EdgeInsets.only(left: 25, top: 25),
                 child: Text(
                   'All Books',
-                  style: GoogleFonts.openSans(
+                  style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
-                      color: Colors.black),
+                      color: Colors.black,
+                      fontFamily: 'RacingSansOne'),
                 ),
               ),
               ListView.builder(
@@ -159,24 +167,27 @@ class _HomeScreenState extends State<HomeScreen> {
                               children: <Widget>[
                                 Text(
                                   books[index].title,
-                                  style: GoogleFonts.openSans(
+                                  style: TextStyle(
                                       fontSize: 17,
                                       fontWeight: FontWeight.w600,
-                                      color: Colors.black),
+                                      color: Colors.black,
+                                      fontFamily: 'RacingSansOne'),
                                 ),
                                 Text(
                                   books[index].author,
-                                  style: GoogleFonts.openSans(
+                                  style: TextStyle(
                                       fontSize: 15,
                                       fontWeight: FontWeight.w400,
-                                      color: Colors.grey),
+                                      color: Colors.grey,
+                                      fontFamily: 'RacingSansOne'),
                                 ),
                                 Text(
                                   '\EGP' + books[index].price,
-                                  style: GoogleFonts.openSans(
+                                  style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w600,
-                                      color: Colors.black),
+                                      color: Colors.black,
+                                      fontFamily: 'RacingSansOne'),
                                 )
                               ],
                             )

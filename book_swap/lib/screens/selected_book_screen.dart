@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:book_swap/models/books_model.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SelectedBookScreen extends StatelessWidget {
   final BooksModel BookModel;
@@ -42,8 +41,7 @@ class SelectedBookScreen extends StatelessWidget {
                         top: 20,
                         child: GestureDetector(
                           onTap: () {
-                            Navigator.pushReplacementNamed(
-                                context, "/homeScreen");
+                            Navigator.pushNamed(context, "/homeScreen");
                           },
                           child: Container(
                             width: 32,
@@ -82,20 +80,22 @@ class SelectedBookScreen extends StatelessWidget {
                   padding: EdgeInsets.only(top: 24, left: 25),
                   child: Text(
                     BookModel.title,
-                    style: GoogleFonts.openSans(
+                    style: TextStyle(
                         fontSize: 27,
                         color: Colors.black,
-                        fontWeight: FontWeight.w600),
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'RacingSansOne'),
                   ),
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 7, left: 25),
                   child: Text(
                     BookModel.author,
-                    style: GoogleFonts.openSans(
+                    style: TextStyle(
                         fontSize: 16,
                         color: Colors.grey,
-                        fontWeight: FontWeight.w600),
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'RacingSansOne'),
                   ),
                 ),
                 Padding(
@@ -105,17 +105,19 @@ class SelectedBookScreen extends StatelessWidget {
                       children: <Widget>[
                         Text(
                           '\EGP',
-                          style: GoogleFonts.openSans(
+                          style: TextStyle(
                               fontSize: 14,
                               color: Colors.redAccent,
-                              fontWeight: FontWeight.w600),
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'RacingSansOne'),
                         ),
                         Text(
                           BookModel.price,
-                          style: GoogleFonts.openSans(
+                          style: TextStyle(
                               fontSize: 32,
                               color: Colors.redAccent,
-                              fontWeight: FontWeight.w600),
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'RacingSansOne'),
                         ),
                       ],
                     )),
@@ -124,20 +126,22 @@ class SelectedBookScreen extends StatelessWidget {
                   margin: EdgeInsets.only(top: 23, bottom: 36),
                   child: Text(
                     'Description',
-                    style: GoogleFonts.openSans(
+                    style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w600,
-                        color: Colors.black),
+                        color: Colors.black,
+                        fontFamily: 'RacingSansOne'),
                   ),
                 ),
                 Padding(
                   padding: EdgeInsets.only(left: 25, right: 25, bottom: 50),
                   child: Text(
                     BookModel.description,
-                    style: GoogleFonts.openSans(
+                    style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w400,
                       color: Colors.black,
+                      fontFamily: 'RacingSansOne',
                       //letterSpacing: 1,
                       //height: 1,
                     ),
