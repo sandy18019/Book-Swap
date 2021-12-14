@@ -111,14 +111,13 @@ class _AddBookPageState extends State<AddBookPage> {
               SizedBox(
                 height: 35,
               ),
-              buildTextField("Book Name", "The Fault in our stars", false),
-              buildTextField("Price", "70 EGP", false),
+              buildTextField("Book Name", "The Fault in our stars"),
+              buildTextField("Price", "70 EGP"),
               buildTextField(
                   "Description",
-                  "a fabulous book about a young teenage girl who has been diagnosed with lung cancer and attends a cancer support group. ",
-                  false),
-              buildTextField("Author", "John Green", false),
-              buildTextField("Location", "Cairo, Egypt", false),
+                  "a fabulous book about a young teenage girl who has been diagnosed with lung cancer and attends a cancer support group. "),
+              buildTextField("Author", "John Green"),
+              buildTextField("Location", "Cairo, Egypt"),
               SizedBox(
                 height: 35,
               ),
@@ -160,26 +159,11 @@ class _AddBookPageState extends State<AddBookPage> {
     );
   }
 
-  Widget buildTextField(
-      String labelText, String placeholder, bool isPasswordTextField) {
+  Widget buildTextField(String labelText, String placeholder) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 35.0),
       child: TextField(
-        obscureText: isPasswordTextField ? showPassword : false,
-        decoration: InputDecoration(
-            suffixIcon: isPasswordTextField
-                ? IconButton(
-                    onPressed: () {
-                      setState(() {
-                        showPassword = !showPassword;
-                      });
-                    },
-                    icon: Icon(
-                      Icons.remove_red_eye,
-                      color: Colors.grey,
-                    ),
-                  )
-                : null,
+            decoration: InputDecoration(
             contentPadding: EdgeInsets.only(bottom: 3),
             labelText: labelText,
             floatingLabelBehavior: FloatingLabelBehavior.always,
