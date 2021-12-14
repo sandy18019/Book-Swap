@@ -37,8 +37,8 @@ class SelectedBookScreen extends StatelessWidget {
                   child: Stack(
                     children: <Widget>[
                       Positioned(
-                        left: 25,
-                        top: 20,
+                        left: 20,
+                        top: 15,
                         child: GestureDetector(
                           onTap: () {
                             Navigator.pushNamed(context, "/homeScreen");
@@ -51,7 +51,7 @@ class SelectedBookScreen extends StatelessWidget {
                                 color: Colors.white),
                             child: Icon(
                               Icons.arrow_back,
-                              size: 30,
+                              size: 33,
                               color: Colors.black,
                             ),
                           ),
