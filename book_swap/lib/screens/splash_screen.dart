@@ -10,7 +10,7 @@ class _MySplashScreenState extends State<SplashScreenView> {
   @override
   void initState() {
     Future.delayed(Duration(seconds: 4), () {
-      Navigator.pushNamed(context, '/');
+      Navigator.pushNamed(context, '/LoginScreen');
     });
     super.initState();
   }
@@ -23,7 +23,14 @@ class _MySplashScreenState extends State<SplashScreenView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon)
+            Image.asset('assets/images/bookswap.png'),
+            Text(
+              'BOOKswap',
+              style: TextStyle(color: Colors.white, fontSize: 35.0),
+            ),
+            CircularProgressIndicator(
+              color: Colors.white,
+            )
           ],
         ),
       ),

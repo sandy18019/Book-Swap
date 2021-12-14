@@ -1,6 +1,6 @@
 class BooksModel {
-  String title, author, price, image, description;
-  int color;
+  var title, author, price, image, description;
+  var color;
 
   BooksModel(this.title, this.author, this.price, this.image, this.color,
       this.description);

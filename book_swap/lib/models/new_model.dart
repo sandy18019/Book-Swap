@@ -1,5 +1,5 @@
 class NewModel {
-  String image;
+  var image;
 
   NewModel(this.image);
 }
