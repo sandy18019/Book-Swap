@@ -1,7 +1,8 @@
 // ignore_for_file: prefer_const_constructors, duplicate_ignore
-
+import 'package:book_swap/screens/addbook_screen.dart';
 import 'package:book_swap/screens/cart_screen.dart';
 import 'package:book_swap/screens/login_screen.dart';
+import 'package:book_swap/screens/settings_screen.dart';
 import 'package:book_swap/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
         '/': (context) => LoginScreen(),
         '/signup': (context) => SignupScreen(),
         '/cart':(context)=> CartView(),
-        //'/forgetpassword':(context) => forgetpassword(),
+        '/setting':(context)=> SettingsPage(),
+        '/addbook':(context)=> AddBook(),
       },
     );
   }
