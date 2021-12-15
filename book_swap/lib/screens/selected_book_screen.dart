@@ -15,7 +15,9 @@ class SelectedBookScreen extends StatelessWidget {
         color: Colors.transparent,
         child: FlatButton(
           color: Colors.redAccent,
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, '/cart');
+          },
           child: Text(
             'Add To Cart',
             style: TextStyle(
@@ -41,7 +43,7 @@ class SelectedBookScreen extends StatelessWidget {
                         top: 15,
                         child: GestureDetector(
                           onTap: () {
-                            Navigator.pushNamed(context, "/homeScreen");
+                            Navigator.pop(context);
                           },
                           child: Container(
                             width: 32,

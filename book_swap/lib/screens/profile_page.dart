@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:user_profile_example/model/user.dart';
-import 'package:user_profile_example/utils/user_preferences.dart';
-import 'package:user_profile_example/widget/appbar_widget.dart';
-import 'package:user_profile_example/widget/button_widget.dart';
-import 'package:user_profile_example/widget/profile_widget.dart';
-import 'package:user_profile_example/widget/library_widget.dart';
+import 'package:book_swap/models/user.dart';
+import 'package:book_swap/utils/user_preferences.dart';
+import 'package:book_swap/widgets/appbar_widget.dart';
+import 'package:book_swap/widgets/button_widget.dart';
+import 'package:book_swap/widgets/profile_widget.dart';
+import 'package:book_swap/widgets/library_widget.dart';
 
 class ProfilePage extends StatefulWidget {
   @override

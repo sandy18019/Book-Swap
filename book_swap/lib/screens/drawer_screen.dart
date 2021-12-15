@@ -7,28 +7,17 @@ import 'package:flutter/material.dart';
 //}
 
 
-  class MyApp extends StatelessWidget {
-
-
-  // This widget is the root of your application.
+  
+  class DrawerScreen extends StatefulWidget{
   @override
-  Widget build(BuildContext context) {
-return MaterialApp(
-home:HomePage(),
-);
-
-  }
-  }
-  class HomePage extends StatefulWidget{
-  @override
-_HomePageState createState() => _HomePageState();
+_DrawerScreenState createState() => _DrawerScreenState();
 
 
   }
 
 
 
-  class _HomePageState extends State<HomePage>{
+  class _DrawerScreenState extends State<DrawerScreen>{
 double value=0;
 
 @override
