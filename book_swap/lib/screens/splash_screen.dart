@@ -1,39 +1,44 @@
-// import 'package:flutter/material.dart';
-// import 'package:splash_screen_view/SplashScreenView.dart';
+import 'dart:async';
 
-// class MySplashScreen extends StatefulWidget {
-//   @override
-//   State<SplashScreenView> createState() => _MySplashScreenState();
-// }
+import 'package:flutter/material.dart';
+import 'package:book_swap/screens/login_screen.dart';
 
-// class _MySplashScreenState extends State<SplashScreenView> {
-//   @override
-//   void initState() {
-//     Future.delayed(Duration(seconds: 4), () {
-//       Navigator.pushNamed(context, '/LoginScreen');
-//     });
-//     super.initState();
-//   }
+class SplachScreen extends StatefulWidget {
+  SplachScreen({Key? key}) : super(key: key);
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: Colors.orange.shade100,
-//       body: Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: [
-//             Image.asset('assets/images/bookswap.png'),
-//             Text(
-//               'BOOKswap',
-//               style: TextStyle(color: Colors.white, fontSize: 35.0),
-//             ),
-//             CircularProgressIndicator(
-//               color: Colors.white,
-//             )
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
+  @override
+  _SplachScreenState createState() => _SplachScreenState();
+}
+
+class _SplachScreenState extends State<SplachScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Timer(Duration(seconds: 3), () {
+      Navigator.of(context)
+          .pushReplacement(MaterialPageRoute(builder: (_) => LoginScreen()));
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.deepOrange.shade100,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              'assets/images/bookswap.png',
+              height: 120,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
