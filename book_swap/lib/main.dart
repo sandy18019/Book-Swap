@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors, duplicate_ignore
+import 'package:book_swap/Screens/profile_page.dart';
 import 'package:book_swap/screens/addbook_screen.dart';
 import 'package:book_swap/screens/cart_screen.dart';
 import 'package:book_swap/screens/drawer_screen.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         '/addbook': (context) => AddBook(),
         '/homescreen': (context) => HomeScreen(),
         '/drawer': (context) => DrawerScreen(),
+        '/profilepage':(context) => ProfilePage()
       },
     );
   }
