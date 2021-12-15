@@ -1,11 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:user_profile_example/model/user.dart';
 import 'package:user_profile_example/utils/user_preferences.dart';
 import 'package:user_profile_example/widget/appbar_widget.dart';
 import 'package:user_profile_example/widget/button_widget.dart';
-
 import 'package:user_profile_example/widget/profile_widget.dart';
+import 'package:user_profile_example/widget/library_widget.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -31,9 +30,119 @@ class _ProfilePageState extends State<ProfilePage> {
           const SizedBox(height: 24),
           Center(child: buildAddButton()),
           const SizedBox(height: 24),
-         
           const SizedBox(height: 48),
-          buildAbout(user),
+          buildLibrary(user),
+          const SizedBox(height: 35),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              GestureDetector(
+                  onTap: () {},
+                  child: SizedBox(
+                      width: 160.0,
+                      height: 160.0,
+                      child: Card(
+                        color: Color.fromARGB(255, 21, 21, 21),
+                        elevation: 2.0,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0)),
+                        child: Center(
+                          child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                children: [
+                                  Image.asset(
+                                    'assets/book1.jpeg',
+                                    width: 64.0,
+                                  ),
+                                  const SizedBox(height: 10.0),
+                                  const Text('book1',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20.0,
+                                      )),
+                                  const SizedBox(height: 5.0),
+                                  const Text('112 EGP',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w100))
+                                ],
+                              )),
+                        ),
+                      ))),
+              GestureDetector(
+                  onTap: () {},
+                  child: SizedBox(
+                      width: 160.0,
+                      height: 160.0,
+                      child: Card(
+                        color: Color.fromARGB(255, 21, 21, 21),
+                        elevation: 2.0,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0)),
+                        child: Center(
+                          child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                children: [
+                                  Image.asset(
+                                    'assets/book2.jpeg',
+                                    width: 64.0,
+                                  ),
+                                  const SizedBox(height: 10.0),
+                                  const Text('Book2',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20.0,
+                                      )),
+                                  const SizedBox(height: 5.0),
+                                  const Text('90 EGP',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w100))
+                                ],
+                              )),
+                        ),
+                      ))),
+              GestureDetector(
+                  onTap: () {},
+                  child: SizedBox(
+                      width: 160.0,
+                      height: 160.0,
+                      child: Card(
+                        color: Color.fromARGB(255, 21, 21, 21),
+                        elevation: 2.0,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0)),
+                        child: Center(
+                          child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                children: [
+                                  Image.asset(
+                                    'assets/book3.jpeg',
+                                    width: 64.0,
+                                  ),
+                                  const SizedBox(height: 10.0),
+                                  const Text('book3',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20.0,
+                                      )),
+                                  const SizedBox(height: 5.0),
+                                  const Text('85 EGP',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w100))
+                                ],
+                              )),
+                        ),
+                      )))
+            ],
+          )
         ],
       ),
     );
@@ -54,11 +163,11 @@ class _ProfilePageState extends State<ProfilePage> {
       );
 
   Widget buildAddButton() => ButtonWidget(
-        text: 'Add a new book',
+        text: 'Add a new Book',
         onClicked: () {},
       );
 
-  Widget buildAbout(User user) => Container(
+  Widget buildLibrary(User user) => Container(
         padding: EdgeInsets.symmetric(horizontal: 48),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

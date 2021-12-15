@@ -1,4 +1,4 @@
-//import 'dart:io';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 
@@ -14,7 +14,7 @@ class ProfileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = Theme.of(context).colorScheme.secondary;
+    final color = Theme.of(context).colorScheme.primary;
 
     return Center(
       child: Stack(
