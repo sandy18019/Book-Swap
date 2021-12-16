@@ -39,10 +39,10 @@ class _ProfilePageState extends State<ProfilePage> {
               GestureDetector(
                   onTap: () {},
                   child: SizedBox(
-                      width: 160.0,
+                      width: 120.0,
                       height: 160.0,
                       child: Card(
-                        color: Color.fromARGB(255, 21, 21, 21),
+                        color: Colors.deepOrange.shade200,
                         elevation: 2.0,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0)),
@@ -52,21 +52,21 @@ class _ProfilePageState extends State<ProfilePage> {
                               child: Column(
                                 children: [
                                   Image.asset(
-                                    'assets/book1.jpeg',
-                                    width: 64.0,
+                                    'assets/images/book1.jpg',
+                                    width: 50,
                                   ),
                                   const SizedBox(height: 10.0),
-                                  const Text('book1',
+                                  const Text('sherlock',
                                       style: TextStyle(
-                                        color: Colors.white,
+                                        color: Colors.black,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 20.0,
+                                        fontSize: 12,
                                       )),
                                   const SizedBox(height: 5.0),
                                   const Text('112 EGP',
                                       style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w100))
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w600))
                                 ],
                               )),
                         ),
@@ -74,10 +74,10 @@ class _ProfilePageState extends State<ProfilePage> {
               GestureDetector(
                   onTap: () {},
                   child: SizedBox(
-                      width: 160.0,
+                      width: 120.0,
                       height: 160.0,
                       child: Card(
-                        color: Color.fromARGB(255, 21, 21, 21),
+                        color: Colors.deepOrange.shade200,
                         elevation: 2.0,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0)),
@@ -87,21 +87,21 @@ class _ProfilePageState extends State<ProfilePage> {
                               child: Column(
                                 children: [
                                   Image.asset(
-                                    'assets/book2.jpeg',
-                                    width: 64.0,
+                                    'assets/images/book2.jpg',
+                                    width: 55.0,
                                   ),
                                   const SizedBox(height: 10.0),
-                                  const Text('Book2',
+                                  const Text('Zenda',
                                       style: TextStyle(
-                                        color: Colors.white,
+                                        color: Colors.black,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 20.0,
+                                        fontSize: 12,
                                       )),
                                   const SizedBox(height: 5.0),
                                   const Text('90 EGP',
                                       style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w100))
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w600))
                                 ],
                               )),
                         ),
@@ -109,10 +109,10 @@ class _ProfilePageState extends State<ProfilePage> {
               GestureDetector(
                   onTap: () {},
                   child: SizedBox(
-                      width: 160.0,
+                      width: 120.0,
                       height: 160.0,
                       child: Card(
-                        color: Color.fromARGB(255, 21, 21, 21),
+                        color: Colors.deepOrange.shade200,
                         elevation: 2.0,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0)),
@@ -122,21 +122,21 @@ class _ProfilePageState extends State<ProfilePage> {
                               child: Column(
                                 children: [
                                   Image.asset(
-                                    'assets/book3.jpeg',
-                                    width: 64.0,
+                                    'assets/images/book3.jpg',
+                                    width: 55.0,
                                   ),
                                   const SizedBox(height: 10.0),
-                                  const Text('book3',
+                                  const Text('juluis',
                                       style: TextStyle(
-                                        color: Colors.white,
+                                        color: Colors.black,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 20.0,
+                                        fontSize: 12,
                                       )),
                                   const SizedBox(height: 5.0),
                                   const Text('85 EGP',
                                       style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w100))
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w600))
                                 ],
                               )),
                         ),
@@ -164,7 +164,9 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Widget buildAddButton() => ButtonWidget(
         text: 'Add a new Book',
-        onClicked: () {},
+        onClicked: () {
+          Navigator.pushNamed(context, '/addbook');
+        },
       );
 
   Widget buildLibrary(User user) => Container(
@@ -185,4 +187,3 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       );
 }
-

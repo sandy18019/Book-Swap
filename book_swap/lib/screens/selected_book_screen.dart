@@ -10,11 +10,11 @@ class SelectedBookScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: Container(
-        margin: EdgeInsets.only(left: 25, right: 25, bottom: 25),
-        height: 49,
+        margin: EdgeInsets.only(left: 25, right: 25, bottom: 15),
+        height: 50,
         color: Colors.transparent,
-        child: FlatButton(
-          color: Colors.redAccent,
+        child: RawMaterialButton(
+          fillColor: Colors.deepOrange.shade200,
           onPressed: () {
             Navigator.pushNamed(context, '/cart');
           },
@@ -32,37 +32,16 @@ class SelectedBookScreen extends StatelessWidget {
           child: CustomScrollView(
             slivers: <Widget>[
               SliverAppBar(
-                backgroundColor: Colors.redAccent,
+                backgroundColor: Colors.deepOrange.shade100,
                 expandedHeight: MediaQuery.of(context).size.height * 0.5,
                 flexibleSpace: Container(
                   height: MediaQuery.of(context).size.height,
                   child: Stack(
                     children: <Widget>[
-                      Positioned(
-                        left: 20,
-                        top: 15,
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: Container(
-                            width: 32,
-                            height: 32,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.white),
-                            child: Icon(
-                              Icons.arrow_back,
-                              size: 33,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
                       Align(
                         alignment: Alignment.bottomCenter,
                         child: Container(
-                          margin: EdgeInsets.only(bottom: 62),
+                          margin: EdgeInsets.only(bottom: 60),
                           width: 175,
                           height: 220,
                           decoration: BoxDecoration(
@@ -85,7 +64,6 @@ class SelectedBookScreen extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 27,
                         color: Colors.black,
-                        fontWeight: FontWeight.w600,
                         fontFamily: 'RacingSansOne'),
                   ),
                 ),
@@ -110,7 +88,6 @@ class SelectedBookScreen extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 14,
                               color: Colors.redAccent,
-                              fontWeight: FontWeight.w600,
                               fontFamily: 'RacingSansOne'),
                         ),
                         Text(
@@ -118,34 +95,29 @@ class SelectedBookScreen extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 32,
                               color: Colors.redAccent,
-                              fontWeight: FontWeight.w600,
                               fontFamily: 'RacingSansOne'),
                         ),
                       ],
                     )),
                 Container(
                   padding: EdgeInsets.only(left: 25),
-                  margin: EdgeInsets.only(top: 23, bottom: 36),
+                  margin: EdgeInsets.only(top: 10, bottom: 15),
                   child: Text(
                     'Description',
                     style: TextStyle(
                         fontSize: 20,
-                        fontWeight: FontWeight.w600,
                         color: Colors.black,
                         fontFamily: 'RacingSansOne'),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 25, right: 25, bottom: 50),
+                  padding: EdgeInsets.only(left: 25),
                   child: Text(
                     BookModel.description,
                     style: TextStyle(
                       fontSize: 15,
-                      fontWeight: FontWeight.w400,
                       color: Colors.black,
                       fontFamily: 'RacingSansOne',
-                      //letterSpacing: 1,
-                      //height: 1,
                     ),
                   ),
                 )
@@ -155,5 +127,5 @@ class SelectedBookScreen extends StatelessWidget {
         ),
       ),
     );
-      }
+  }
 }
