@@ -10,7 +10,7 @@ class CartView extends StatefulWidget {
 }
 
 class _CartViewState extends State<CartView> {
-  bool value=false;
+  bool value = false;
   @override
   Widget build(BuildContext context) {
     Cart cart = Cart();
@@ -24,8 +24,8 @@ class _CartViewState extends State<CartView> {
             Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(colors: [
-                  Colors.blue,
-                  Colors.lightBlue,
+                  Colors.deepOrange.shade100,
+                  Colors.deepOrange.shade200,
                 ], begin: Alignment.bottomCenter, end: Alignment.topCenter),
               ),
             ),
@@ -49,7 +49,7 @@ class _CartViewState extends State<CartView> {
                       ),
                       Text(
                         "Sandy Elias ",
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                        style: TextStyle(color: Colors.black, fontSize: 20),
                       ),
                     ],
                   )),
@@ -58,15 +58,15 @@ class _CartViewState extends State<CartView> {
                     children: [
                       ListTile(
                         onTap: () {
-                          Navigator.pushNamed(context, '/homepage');
+                          Navigator.pushNamed(context, '/homescreen');
                         },
                         leading: Icon(
                           Icons.home,
-                          color: Colors.white,
+                          color: Colors.black,
                         ),
                         title: Text(
                           "Home",
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.black),
                         ),
                       ),
                       ListTile(
@@ -75,35 +75,35 @@ class _CartViewState extends State<CartView> {
                         },
                         leading: Icon(
                           Icons.person,
-                          color: Colors.white,
+                          color: Colors.black,
                         ),
                         title: Text(
                           "Profile",
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.black),
                         ),
                       ),
                       ListTile(
                         onTap: () {},
                         leading: Icon(
                           Icons.settings,
-                          color: Colors.white,
+                          color: Colors.black,
                         ),
                         title: Text(
                           "Settings",
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.black),
                         ),
                       ),
                       ListTile(
                         onTap: () {
-                          Navigator.pushNamed(context, '/login');
+                          Navigator.pushNamed(context, '/Loginscreen');
                         },
                         leading: Icon(
                           Icons.logout,
-                          color: Colors.white,
+                          color: Colors.black,
                         ),
                         title: Text(
                           "Logout",
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.black),
                         ),
                       )
                     ],
@@ -112,7 +112,7 @@ class _CartViewState extends State<CartView> {
               ),
             )),
             TweenAnimationBuilder(
-                tween: Tween<double>(begin: 0, end: (value?1:0)),
+                tween: Tween<double>(begin: 0, end: (value ? 1 : 0)),
                 duration: Duration(milliseconds: 600),
                 builder: (_, double val, __) {
                   return (Transform(
@@ -123,12 +123,17 @@ class _CartViewState extends State<CartView> {
                         ..rotateY((pi / 6) * val),
                       child: Scaffold(
                         appBar: AppBar(
-                          title: Text("Drawer Menu"),
-                          leading: IconButton(icon: Icon(Icons.ac_unit),onPressed: (){
-                            setState(() {
-                              value = !value;
-                            });
-                          },),
+                          backgroundColor: Colors.deepOrange.shade200,
+                          title: Text("Cart",
+                              style: TextStyle(color: Colors.black)),
+                          leading: IconButton(
+                            icon: Icon(Icons.menu, color: Colors.black),
+                            onPressed: () {
+                              setState(() {
+                                value = !value;
+                              });
+                            },
+                          ),
                         ),
                         body: Column(
                           children: [
@@ -171,7 +176,7 @@ class _CartViewState extends State<CartView> {
                                                   Text(
                                                     price[index].toString(),
                                                     style: TextStyle(
-                                                        color: Colors.green,
+                                                        color: Colors.black,
                                                         fontSize: 18),
                                                   ),
                                                   SizedBox(
@@ -180,7 +185,8 @@ class _CartViewState extends State<CartView> {
                                                   Container(
                                                     width: 120,
                                                     height: 25,
-                                                    color: Colors.grey.shade200,
+                                                    color: Colors
+                                                        .deepOrange.shade200,
                                                     child: Row(
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
@@ -246,12 +252,12 @@ class _CartViewState extends State<CartView> {
                                       Text('TOTAL',
                                           style: TextStyle(
                                               fontSize: 22,
-                                              color: Colors.grey)),
+                                              color: Colors.black)),
                                       SizedBox(
                                         height: 20,
                                       ),
                                       Text(
-                                        '2000',
+                                        '450',
                                         style: TextStyle(),
                                       ),
                                     ],
@@ -264,7 +270,7 @@ class _CartViewState extends State<CartView> {
                                       style: ButtonStyle(
                                         foregroundColor:
                                             MaterialStateProperty.all<Color>(
-                                                Colors.blue),
+                                                Colors.black),
                                       ),
                                       onPressed: () {},
                                       child: Text('CHECKOUT'),

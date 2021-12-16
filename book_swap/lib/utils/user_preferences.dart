@@ -7,6 +7,5 @@ class UserPreferences {
     name: 'Yasmina',
     email: 'yasmina@gmail.com',
     about: '',
-    isDarkMode: false,
   );
 }

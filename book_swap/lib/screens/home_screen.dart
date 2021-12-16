@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 margin: EdgeInsets.only(left: 20, right: 20, top: 15),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: customLightGreyColor),
+                    color: Colors.deepOrange.shade100),
                 child: Stack(
                   children: <Widget>[
                     TextField(
@@ -55,14 +55,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         fontFamily: 'RacingSansOne',
                       ),
                       decoration: InputDecoration(
-                          contentPadding:
-                              EdgeInsets.only(left: 19, bottom: 10),
+                          contentPadding: EdgeInsets.only(left: 19, bottom: 10),
                           border: InputBorder.none,
                           hintText: 'Search for books',
                           hintStyle: TextStyle(
                             fontSize: 12,
-                            color: Colors.grey,
-                            fontWeight: FontWeight.w600,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w400,
                             fontFamily: 'RacingSansOne',
                           )),
                     ),
@@ -141,14 +140,17 @@ class _HomeScreenState extends State<HomeScreen> {
                         margin: EdgeInsets.only(bottom: 19),
                         height: 81,
                         width: MediaQuery.of(context).size.width - 50,
-                        color: Colors.white,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.deepOrange.shade100,
+                        ),
                         child: Row(
                           children: <Widget>[
                             Container(
                               height: 80,
                               width: 55,
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
+                                  borderRadius: BorderRadius.circular(10),
                                   image: DecorationImage(
                                     image: AssetImage(books[index].image),
                                   ),

@@ -1,7 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:book_swap/screens/settings_screen.dart';
 
 class AddBook extends StatelessWidget {
   @override
@@ -27,12 +26,11 @@ class _AddBookPageState extends State<AddBookPage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 1,
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            color: Colors.red[300],
-          ),
-          onPressed: () {},
+        leading: BackButton(
+          color: Colors.red[300],
+          onPressed: () {
+            Navigator.pushNamed(context, '/homescreen');
+          },
         ),
         actions: [
           IconButton(
@@ -40,10 +38,7 @@ class _AddBookPageState extends State<AddBookPage> {
               Icons.settings,
               color: Colors.red[300],
             ),
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) => SettingsPage()));
-            },
+            onPressed: () {},
           ),
         ],
       ),
@@ -113,8 +108,7 @@ class _AddBookPageState extends State<AddBookPage> {
               ),
               buildTextField("Book Name", "The Fault in our stars"),
               buildTextField("Price", "70 EGP"),
-              buildTextField(
-                  "Description",
+              buildTextField("Description",
                   "a fabulous book about a young teenage girl who has been diagnosed with lung cancer and attends a cancer support group. "),
               buildTextField("Author", "John Green"),
               buildTextField("Location", "Cairo, Egypt"),
@@ -163,14 +157,13 @@ class _AddBookPageState extends State<AddBookPage> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 35.0),
       child: TextField(
-            decoration: InputDecoration(
+        decoration: InputDecoration(
             contentPadding: EdgeInsets.only(bottom: 3),
             labelText: labelText,
             floatingLabelBehavior: FloatingLabelBehavior.always,
             hintText: placeholder,
             hintStyle: TextStyle(
               fontSize: 16,
-              fontWeight: FontWeight.bold,
               color: Colors.black,
             )),
       ),

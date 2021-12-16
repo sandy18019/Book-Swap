@@ -31,7 +31,6 @@ class _SplachScreenState extends State<SplachScreen> {
           children: [
             Image.asset(
               'assets/images/bookswap.png',
-              height: 120,
             ),
             SizedBox(
               height: 20,

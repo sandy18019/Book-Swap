@@ -51,11 +51,11 @@ class ProfileWidget extends StatelessWidget {
         color: Colors.white,
         all: 3,
         child: buildCircle(
-          color: color,
+          color: Colors.deepOrange.shade200,
           all: 8,
           child: Icon(
             Icons.edit,
-            color: Colors.white,
+            color: Colors.black,
             size: 20,
           ),
         ),
