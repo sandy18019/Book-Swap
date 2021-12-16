@@ -11,7 +11,7 @@ class CartView extends StatefulWidget {
 }
 
 class _CartViewState extends State<CartView> {
-  double value=0;
+  bool value=false;
   @override
   Widget build(BuildContext context) {
     Cart cart =  Cart();
@@ -19,9 +19,6 @@ class _CartViewState extends State<CartView> {
     List<String> name = cart.name!;
     List<int> price = cart.price!;
     return Scaffold(
-      
-     body:
-     Scaffold(
    body: Stack(
      children: [
      Container(
@@ -65,7 +62,9 @@ class _CartViewState extends State<CartView> {
                  child:ListView(
                 children: [
                   ListTile(
-                    onTap: (){},
+                    onTap: (){
+                      
+                    },
                     leading: Icon(
                     Icons.home,
                     color:Colors.white,
@@ -75,7 +74,8 @@ class _CartViewState extends State<CartView> {
                   ),
 
                   ListTile(
-                    onTap: (){},
+                    onTap: (){
+                    },
                     leading: Icon(
                     Icons.person,
                     color:Colors.white,
@@ -107,7 +107,7 @@ class _CartViewState extends State<CartView> {
                 )
                 ),
                 TweenAnimationBuilder(
-          tween: Tween<double>(begin: 0,end: value), 
+          tween: Tween<double>(begin: 0,end: (value?1:0)), 
           duration: Duration(milliseconds: 600),
            builder: (_,double val,__){
 
@@ -120,7 +120,11 @@ class _CartViewState extends State<CartView> {
              child: Scaffold(
                appBar: AppBar(
                 title: Text("Drawer Menu") ,
-
+                leading: IconButton(icon: Icon(Icons.ac_unit),onPressed: (){
+               setState(() {
+                  value = !value;
+               });
+                },),
                 ),
                 body: Column(
        children:[
@@ -231,36 +235,30 @@ Text('TOTAL',
     
 
            }),
-           GestureDetector(
-            onTap:(){
-               setState(() {
-                 value == 0 ? value=1: value=0;
-                 
-               });
+      //      GestureDetector(
 
-             } ,
+      //       onPanStart: ,
 
-       //   onHorizontalDragUpdate: (e) {
-         //if(e.delta.dx>0){
-           //setState(() {
-             //value=0;
-           //});
-         //}
+      //  //   onHorizontalDragUpdate: (e) {
+      //    //if(e.delta.dx>0){
+      //      //setState(() {
+      //        //value=0;
+      //      //});
+      //    //}
 
-          //},
+      //     //},
 
 
 
 
-           )
+      //      )
 
 
 
                   ],
    ),
 
-   ),
+   );
      
-    );
   }
 }
