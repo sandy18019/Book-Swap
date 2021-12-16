@@ -35,7 +35,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         'Main Library',
                         style: TextStyle(
                             fontSize: 22,
-                            fontWeight: FontWeight.w600,
                             fontFamily: 'RacingSansOne',
                             color: Colors.black),
                       ),
@@ -43,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   )),
               Container(
                 height: 39,
-                margin: EdgeInsets.only(left: 25, right: 25, top: 18),
+                margin: EdgeInsets.only(left: 20, right: 20, top: 15),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: customLightGreyColor),
@@ -51,14 +50,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: <Widget>[
                     TextField(
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: 15,
                         color: Colors.black,
-                        fontWeight: FontWeight.w600,
                         fontFamily: 'RacingSansOne',
                       ),
                       decoration: InputDecoration(
                           contentPadding:
-                              EdgeInsets.only(left: 19, right: 50, bottom: 8),
+                              EdgeInsets.only(left: 19, bottom: 10),
                           border: InputBorder.none,
                           hintText: 'Search for books',
                           hintStyle: TextStyle(
@@ -86,7 +84,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   'New',
                   style: TextStyle(
                     fontSize: 20,
-                    fontWeight: FontWeight.w600,
                     color: Colors.black,
                     fontFamily: 'RacingSansOne',
                   ),
@@ -119,7 +116,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   'All Books',
                   style: TextStyle(
                       fontSize: 20,
-                      fontWeight: FontWeight.w600,
                       color: Colors.black,
                       fontFamily: 'RacingSansOne'),
                 ),
@@ -168,8 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Text(
                                   books[index].title,
                                   style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.w600,
+                                      fontSize: 18,
                                       color: Colors.black,
                                       fontFamily: 'RacingSansOne'),
                                 ),
@@ -184,8 +179,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Text(
                                   '\EGP' + books[index].price,
                                   style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600,
+                                      fontSize: 12,
                                       color: Colors.black,
                                       fontFamily: 'RacingSansOne'),
                                 )
