@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
-class DrawerWidget extends StatefulWidget{
+
+class DrawerWidget extends StatefulWidget {
   Widget child = Container();
   DrawerWidget({Key? key, required this.child}) : super(key: key);
 
@@ -13,7 +14,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
   _DrawerWidgetState({required this.child});
   @override
   Widget build(BuildContext context) {
-  bool value = false;
+    bool value = false;
 
     return Scaffold(
       body: Stack(
@@ -54,9 +55,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                     child: ListView(
                   children: [
                     ListTile(
-                      onTap: () {
-                        
-                      },
+                      onTap: () {},
                       leading: Icon(
                         Icons.home,
                         color: Colors.white,

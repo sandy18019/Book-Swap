@@ -1,7 +1,9 @@
 import 'package:book_swap/Widgets/rounded_input_field.dart';
 import 'package:book_swap/Widgets/text_field_container.dart';
+import 'package:book_swap/services/authentication_services.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/src/provider.dart';
 
 class LoginForm extends StatelessWidget {
   final _formkey = GlobalKey<FormState>();
@@ -69,6 +71,9 @@ class LoginForm extends StatelessWidget {
                   const SnackBar(content: Text(' ')),
                 );
               }
+              context.read<AuthenticationSrvice>().signIn(
+                  email: emailController.text.trim(),
+                  password: passwordController.text.trim());
               Navigator.pushNamed(context, '/homescreen');
             },
             style: ElevatedButton.styleFrom(

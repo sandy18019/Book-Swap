@@ -1,5 +1,7 @@
+import 'package:book_swap/services/authentication_services.dart';
 import 'package:flutter/material.dart';
 import 'package:book_swap/Widgets/text_field_container.dart';
+import 'package:provider/src/provider.dart';
 
 class SignUpForm extends StatelessWidget {
   final _formkey = GlobalKey<FormState>();
@@ -106,6 +108,10 @@ class SignUpForm extends StatelessWidget {
                     const SnackBar(content: Text(' ')),
                   );
                 }
+                context.read<AuthenticationSrvice>().signIn(
+                    email: emailController.text.trim(),
+                    password: passwordController.text.trim());
+                Navigator.pushNamed(context, '/Loginscreen');
               },
               style: ElevatedButton.styleFrom(
                   primary: color,

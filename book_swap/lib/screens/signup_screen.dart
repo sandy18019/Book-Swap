@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:book_swap/Widgets/signup_form.dart';
-import 'package:book_swap/Widgets/text_field_container.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({Key? key}) : super(key: key);

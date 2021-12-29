@@ -23,8 +23,6 @@ class _HomeScreenState extends State<HomeScreen> {
             children: <Widget>[
               heading(),
               searchBar(),
-
-              
               Padding(
                 padding: EdgeInsets.only(left: 25, top: 25),
                 child: Text(
@@ -37,8 +35,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               newBooks(),
-
-
               Padding(
                 padding: EdgeInsets.only(left: 25, top: 25),
                 child: Text(
@@ -50,7 +46,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               menu(),
-
             ],
           ),
         ),

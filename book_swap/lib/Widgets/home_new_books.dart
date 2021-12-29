@@ -16,14 +16,12 @@ class newBooks extends StatelessWidget {
               height: 180,
               width: 140,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                image: DecorationImage(
-                  image: AssetImage(newbooks[index].image),
-                )
-              ),
+                  borderRadius: BorderRadius.circular(10),
+                  image: DecorationImage(
+                    image: AssetImage(newbooks[index].image),
+                  )),
             );
-          }
-        ),
+          }),
     );
   }
 }
