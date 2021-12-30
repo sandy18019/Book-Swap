@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_constructors, duplicate_ignore
 import 'package:book_swap/screens/LoadingScreen.dart';
 import 'package:book_swap/screens/errorscreen.dart';
 import 'package:book_swap/screens/extract_arguments.dart';
@@ -20,30 +19,37 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget{
+class MyApp extends StatelessWidget {
   final _fbApp = Firebase.initializeApp();
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(providers:[
-      Provider<AuthenticationSrvice>(create:(_)=>AuthenticationSrvice(FirebaseAuth.instance),),
-      StreamProvider(create:(context)=>context.read<AuthenticationSrvice>().authStateChanges,initialData: null,)
-    ],);
+    return MultiProvider(
+      providers: [
+        Provider<AuthenticationSrvice>(
+          create: (_) => AuthenticationSrvice(FirebaseAuth.instance),
+        ),
+        StreamProvider(
+          create: (context) =>
+              context.read<AuthenticationSrvice>().authStateChanges,
+          initialData: null,
+        )
+      ],
+    );
     // ignore: dead_code
     return MaterialApp(
-    home: FutureBuilder(
-      future: _fbApp,
-    builder: (context, snapshot){
-        if(snapshot.hasError){
-          return ErrorScreen();
-        }else if (snapshot.hasData)
-        {
-          return AuthenticationWrapper();
-        }
-        else{
-          return LoadingScreen();
-        }
-    },),
-    initialRoute: '/',
+      home: FutureBuilder(
+        future: _fbApp,
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return ErrorScreen();
+          } else if (snapshot.hasData) {
+            return AuthenticationWrapper();
+          } else {
+            return LoadingScreen();
+          }
+        },
+      ),
+      initialRoute: '/',
       routes: {
         '/': (context) => SplachScreen(),
         '/Loginscreen': (context) => LoginScreen(),
@@ -52,24 +58,34 @@ class MyApp extends StatelessWidget{
         '/addbook': (context) => AddBook(),
         '/homescreen': (context) => HomeScreen(),
         '/drawer': (context) => DrawerScreen(),
-        '/profilepage':(context) => ProfilePage()
+        '/profilepage': (context) => ProfilePage()
       },
       onGenerateRoute: (settings) {
-      if (settings.name == PassArgumentsScreen.routeName) {
-        final args = settings.arguments as ScreenArguments;
-
-        return MaterialPageRoute(
-          builder: (context) {
-            return PassArgumentsScreen(
-              title: args.title,
-              message: args.message,
-            );
-          },
-        );
-      }
-      assert(false, 'Need to implement ${settings.name}');
-      return null;
-    },
+        if (settings.name == PassArgumentsScreen.routeName) {
+          final args = settings.arguments as ScreenArguments;
+          return MaterialPageRoute(
+            builder: (context) {
+              return PassArgumentsScreen(
+                title: args.title,
+                message: args.message,
+              );
+            },
+          );
+        }
+        assert(false, 'Need to implement ${settings.name}');
+        return null;
+      },
     );
+  }
+}
+
+class AuthenticationWrapper extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final FirebaseUser = context.watch<User?>();
+    if (FirebaseUser != null) {
+      return HomeScreen();
+    }
+    return LoginScreen();
   }
 }
