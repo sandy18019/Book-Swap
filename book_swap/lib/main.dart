@@ -34,9 +34,9 @@ class MyApp extends StatelessWidget {
           initialData: null,
         )
       ],
-    );
+    
     // ignore: dead_code
-    return MaterialApp(
+    child : MaterialApp(
       home: FutureBuilder(
         future: _fbApp,
         builder: (context, snapshot) {
@@ -49,9 +49,9 @@ class MyApp extends StatelessWidget {
           }
         },
       ),
-      initialRoute: '/',
+      // initialRoute: '/',
       routes: {
-        '/': (context) => SplachScreen(),
+        // '/': (context) => SplachScreen(),
         '/Loginscreen': (context) => LoginScreen(),
         '/signup': (context) => SignupScreen(),
         '/cart': (context) => CartView(),
@@ -75,6 +75,7 @@ class MyApp extends StatelessWidget {
         assert(false, 'Need to implement ${settings.name}');
         return null;
       },
+    )
     );
   }
 }
