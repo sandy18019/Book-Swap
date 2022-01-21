@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
             '/addbook': (context) => AddBook(),
             '/homescreen': (context) => HomeScreen(),
             '/drawer': (context) => DrawerScreen(),
-            '/profilepage': (context) => ProfilePage()
+            // '/profilepage': (context) => ProfilePage()
           },
           onGenerateRoute: (settings) {
             if (settings.name == PassArgumentsScreen.routeName) {

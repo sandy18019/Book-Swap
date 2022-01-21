@@ -10,7 +10,7 @@ class SelectedBookScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: Container(
-        margin: EdgeInsets.only(left: 25, right: 25, bottom: 15),
+        margin: EdgeInsets.only(left: 25, right: 25, bottom: 25),
         height: 50,
         color: Colors.transparent,
         child: RawMaterialButton(
@@ -31,7 +31,7 @@ class SelectedBookScreen extends StatelessWidget {
         child: Container(
           child: CustomScrollView(
             slivers: <Widget>[
-              SliverAppBar(
+              SliverAppBar (
                 backgroundColor: Colors.deepOrange.shade100,
                 expandedHeight: MediaQuery.of(context).size.height * 0.5,
                 flexibleSpace: Container(

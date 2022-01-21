@@ -1,3 +1,4 @@
+import 'package:book_swap/models/books_model.dart';
 import 'package:book_swap/models/cart_model.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
@@ -13,10 +14,6 @@ class _CartViewState extends State<CartView> {
   bool value = false;
   @override
   Widget build(BuildContext context) {
-    Cart cart = Cart();
-    List<String> img = cart.img!;
-    List<String> name = cart.name!;
-    List<int> price = cart.price!;
     return Scaffold(
       body: Scaffold(
         body: Stack(
@@ -138,106 +135,105 @@ class _CartViewState extends State<CartView> {
                         body: Column(
                           children: [
                             Expanded(
-                              child: Container(
-                                child: ListView.separated(
-                                  itemBuilder: (context, index) {
-                                    return Container(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: 20),
-                                        height: 250,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceAround,
-                                          children: [
-                                            Container(
-                                                padding: EdgeInsets.all(10),
-                                                width: MediaQuery.of(context)
-                                                        .size
-                                                        .width /
-                                                    3,
-                                                height: double.infinity,
-                                                child: Image.asset(
-                                                  img[index],
-                                                  fit: BoxFit.contain,
-                                                )),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 40),
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Text(
-                                                    name[index],
-                                                    style:
-                                                        TextStyle(fontSize: 18),
-                                                    textAlign: TextAlign.center,
-                                                  ),
-                                                  Text(
-                                                    price[index].toString(),
-                                                    style: TextStyle(
+                              child: ListView.builder(
+                                itemCount: books.length,
+                                itemBuilder: (context, index) {
+                                  return Container(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 20),
+                                      height: 250,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Container(
+                                              padding: EdgeInsets.all(10),
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  3,
+                                              height: double.infinity,
+                                              child: Image.asset(
+                                                books[index].image,
+                                                fit: BoxFit.contain,
+                                              )),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 40),
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  books[index].title,
+                                                  style:
+                                                      TextStyle(fontSize: 18),
+                                                  textAlign: TextAlign.center,
+                                                ),
+                                                Text(
+                                                  '\EGP' + books[index].price,
+                                                  style: TextStyle(
+                                                      color: Colors.black,
+                                                      fontSize: 18),
+                                                ),
+                                                SizedBox(
+                                                  height: 20,
+                                                ),
+                                                Container(
+                                                  width: 120,
+                                                  height: 25,
+                                                  color: Colors
+                                                      .deepOrange.shade200,
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Icon(
+                                                        Icons.add,
                                                         color: Colors.black,
-                                                        fontSize: 18),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 20,
-                                                  ),
-                                                  Container(
-                                                    width: 120,
-                                                    height: 25,
-                                                    color: Colors
-                                                        .deepOrange.shade200,
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Icon(
-                                                          Icons.add,
+                                                      ),
+                                                      SizedBox(
+                                                        width: 20,
+                                                      ),
+                                                      Text(
+                                                        '1',
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                            fontSize: 18,
+                                                            color:
+                                                                Colors.black),
+                                                      ),
+                                                      SizedBox(
+                                                        width: 20,
+                                                      ),
+                                                      Container(
+                                                        padding:
+                                                            EdgeInsets.only(
+                                                          bottom: 100,
+                                                        ),
+                                                        child: Icon(
+                                                          Icons.minimize,
                                                           color: Colors.black,
                                                         ),
-                                                        SizedBox(
-                                                          width: 20,
-                                                        ),
-                                                        Text(
-                                                          '1',
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: TextStyle(
-                                                              fontSize: 18,
-                                                              color:
-                                                                  Colors.black),
-                                                        ),
-                                                        SizedBox(
-                                                          width: 20,
-                                                        ),
-                                                        Container(
-                                                          padding:
-                                                              EdgeInsets.only(
-                                                            bottom: 100,
-                                                          ),
-                                                          child: Icon(
-                                                            Icons.minimize,
-                                                            color: Colors.black,
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
+                                                      ),
+                                                    ],
                                                   ),
-                                                ],
-                                              ),
+                                                ),
+                                              ],
                                             ),
-                                          ],
-                                        ));
-                                  },
-                                  itemCount: name.length,
-                                  separatorBuilder:
-                                      (BuildContext context, int index) {
-                                    return SizedBox(
-                                      height: 10,
-                                    );
-                                  },
-                                ),
+                                          ),
+                                        ],
+                                      ));
+                                },
+                                //itemCount: title.length,
+                                // separatorBuilder:
+                                //     (BuildContext context, int index) {
+                                //   return SizedBox(
+                                //     height: 10,
+                                //   );
+                                //},
                               ),
                             ),
                             Padding(

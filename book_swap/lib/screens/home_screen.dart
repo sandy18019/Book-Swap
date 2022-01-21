@@ -34,56 +34,73 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          child: ListView(
-            physics: BouncingScrollPhysics(),
-            children: <Widget>[
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    'hello ${LoggedInUser.firstName}${LoggedInUser.firstName}',
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: 'RacingSansOne',
-                        color: Colors.grey),
-                  ),
-                  Text(
-                    'Main Library',
-                    style: TextStyle(
-                        fontSize: 22,
-                        fontFamily: 'RacingSansOne',
-                        color: Colors.black),
-                  ),
-                  searchBar(),
-                ],
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 25, top: 25),
-                child: Text(
-                  'New',
+        child: ListView(
+          physics: BouncingScrollPhysics(),
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(left: 25, top: 25),
+              child:Text(
+                  'hello ${LoggedInUser.firstName}${LoggedInUser.firstName}',
                   style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: 'RacingSansOne',
+                      color: Colors.grey),
+                ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 25),
+              child:Text(
+                  'Main Library',
+                  style: TextStyle(
+                      fontSize: 22,
+                      fontFamily: 'RacingSansOne',
+                      color: Colors.black),
+                ),
+            ),
+            searchBar(),
+            Padding(
+              padding: EdgeInsets.only(left: 25, top: 25),
+              child: Text(
+                'New',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
+                  fontFamily: 'RacingSansOne',
+                ),
+              ),
+            ),
+            newBooks(),
+            Padding(
+              padding: EdgeInsets.only(left: 25, top: 25),
+              child: Text(
+                'All Books',
+                style: TextStyle(
                     fontSize: 20,
                     color: Colors.black,
-                    fontFamily: 'RacingSansOne',
-                  ),
-                ),
+                    fontFamily: 'RacingSansOne'),
               ),
-              newBooks(),
-              Padding(
-                padding: EdgeInsets.only(left: 25, top: 25),
+            ),
+            menu(),
+            Container(
+              margin: EdgeInsets.only(left: 25, right: 25, bottom: 25),
+              height: 50,
+              color: Colors.transparent,
+              child: RawMaterialButton(
+                fillColor: Colors.deepOrange.shade200,
+                onPressed: () {
+                  Navigator.pushNamed(context, '/addbook');
+                },
                 child: Text(
-                  'All Books',
+                  'Add book',
                   style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black,
-                      fontFamily: 'RacingSansOne'),
+                      fontSize: 14, fontWeight: FontWeight.w600, color: Colors.black),
                 ),
+                shape:
+                    RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
               ),
-              menu(),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

@@ -69,7 +69,7 @@ var BookData = [
     "description": "short description about the book here......."
   },
   {
-    "title": "The Beauty And The Beast",
+    "title": "beauty & beast",
     "author": "Gabrielle-Susan de Villeneuve",
     "price": "120",
     "image": "assets/images/beast.png",
