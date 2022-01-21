@@ -1,18 +1,28 @@
-import 'package:book_swap/services/authentication_services.dart';
+import 'package:book_swap/helpers/appcolors.dart';
+import 'package:book_swap/models/signup.dart';
+import 'package:book_swap/screens/home_screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
-import 'package:book_swap/Widgets/text_field_container.dart';
-import 'package:provider/src/provider.dart';
 
-class SignUpForm extends StatelessWidget {
+class SignUpForm extends StatefulWidget {
+  @override
+  _SignUpFormState createState() => _SignUpFormState();
+}
+
+class _SignUpFormState extends State<SignUpForm> {
+  final _auth = FirebaseAuth.instance;
   final _formkey = GlobalKey<FormState>();
   final firstNameController = TextEditingController();
   final lastNameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final confirmpasswordController = TextEditingController();
+  bool _showPassword = true;
   final Color color, textColor;
-  SignUpForm(
-      {this.color = Colors.grey, this.textColor = Colors.white, Key? key})
-      : super(key: key);
+  _SignUpFormState(
+      {this.color = Colors.grey, this.textColor = Colors.white, Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +40,21 @@ class SignUpForm extends StatelessWidget {
             TextFormField(
               controller: firstNameController,
               validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'PLEASE ENTER YOUR FIRST NAME';
+                RegExp regExp = new RegExp(r'^.{3,}$');
+                if (value!.isEmpty) {
+                  return ('PLEASE ENTER YOUR FIRST NAME');
+                }
+                if (!regExp.hasMatch(value)) {
+                  return ('Enter A valid Name (Min.3 Characters)');
                 }
                 return null;
               },
+              onSaved: (value) {
+                firstNameController.text = value!;
+              },
               decoration: InputDecoration(
                   hintText: "Your first name ",
+                  prefixIcon: Icon(Icons.account_circle),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(29),
                   ),
@@ -47,13 +65,17 @@ class SignUpForm extends StatelessWidget {
             TextFormField(
               controller: lastNameController,
               validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'PLEASE ENTER YOUR LAST NAME';
+                if (value!.isEmpty) {
+                  return ('PLEASE ENTER YOUR LAST NAME');
                 }
                 return null;
               },
+              onSaved: (value) {
+                lastNameController.text = value!;
+              },
               decoration: InputDecoration(
                   hintText: "Your last name ",
+                  prefixIcon: Icon(Icons.account_circle),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(29),
                   ),
@@ -67,10 +89,18 @@ class SignUpForm extends StatelessWidget {
                 if (value == null || value.isEmpty) {
                   return 'PLEASE ENTER YOUR EMAIL NAME';
                 }
+                if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
+                    .hasMatch(value)) {
+                  return ('PLEASE ENTER A VALID EMAIL');
+                }
                 return null;
               },
+              onSaved: (value) {
+                emailController.text = value!;
+              },
               decoration: InputDecoration(
-                  hintText: "Your Email ",
+                  hintText: "Email ",
+                  prefixIcon: Icon(Icons.mail),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(29),
                   ),
@@ -81,18 +111,60 @@ class SignUpForm extends StatelessWidget {
             TextFormField(
               controller: passwordController,
               validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'PLEASE ENTER A PASSWORD';
+                RegExp regExp = new RegExp(r'^.{8,}$');
+                if (value!.isEmpty) {
+                  return ('PLEASE ENTER A Password');
+                }
+                if (!regExp.hasMatch(value)) {
+                  return ('Enter A valid password (Min.8 Characters)');
                 }
                 return null;
               },
-              obscureText: true,
+              onSaved: (value) {
+                passwordController.text = value!;
+              },
+              obscureText: _showPassword,
               decoration: InputDecoration(
                   hintText: "Enter your Password",
                   suffixIcon: IconButton(
-                    icon: Icon(Icons.visibility),
-                    color: Colors.black,
-                    onPressed: () {},
+                    icon: Icon(_showPassword
+                        ? Icons.visibility
+                        : Icons.visibility_off),
+                    onPressed: () {
+                      _showPassword = !_showPassword;
+                      setState(() {});
+                    },
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(29),
+                  ),
+                  fillColor: Colors.white,
+                  filled: true),
+            ),
+            SizedBox(height: 20),
+            TextFormField(
+              controller: confirmpasswordController,
+              validator: (value) {
+                if (passwordController.text.length > 8 &&
+                    passwordController.text != value) {
+                  return ('Password do not match');
+                }
+                return null;
+              },
+              onSaved: (value) {
+                confirmpasswordController.text = value!;
+              },
+              obscureText: _showPassword,
+              decoration: InputDecoration(
+                  hintText: "Re-enter your Password",
+                  suffixIcon: IconButton(
+                    icon: Icon(_showPassword
+                        ? Icons.visibility
+                        : Icons.visibility_off),
+                    onPressed: () {
+                      _showPassword = !_showPassword;
+                      setState(() {});
+                    },
                   ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(29),
@@ -103,19 +175,13 @@ class SignUpForm extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                if (_formkey.currentState!.validate()) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text(' ')),
-                  );
-                }
-                context.read<AuthenticationSrvice>().signIn(
-                    email: emailController.text.trim(),
-                    password: passwordController.text.trim());
-                Navigator.pushNamed(context, '/Loginscreen');
+                SignUp(emailController.text, passwordController.text);
               },
               style: ElevatedButton.styleFrom(
-                  primary: color,
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  primary: AppColors.Main_color,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50)),
+                  padding: EdgeInsets.all(25),
                   textStyle: TextStyle(
                       color: textColor,
                       fontSize: 25,
@@ -126,5 +192,37 @@ class SignUpForm extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void SignUp(String email, String Password) async {
+    if (_formkey.currentState!.validate()) {
+      await _auth
+          .createUserWithEmailAndPassword(email: email, password: Password)
+          .then((value) => {postDetailsToFireStore()})
+          .catchError((e) {
+        Fluttertoast.showToast(msg: e!.message);
+      });
+    }
+  }
+
+  postDetailsToFireStore() async {
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    User? user = _auth.currentUser;
+    usermodel userModel = usermodel();
+
+    userModel.email = user!.email;
+    userModel.userid = user.uid;
+    userModel.firstName = firstNameController.text;
+    userModel.LastName = lastNameController.text;
+
+    await firebaseFirestore
+        .collection("user")
+        .doc(user.uid)
+        .set(userModel.toMap());
+    Fluttertoast.showToast(msg: "Account created successfully.");
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => HomeScreen()),
+        (route) => false);
   }
 }

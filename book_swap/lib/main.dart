@@ -15,70 +15,59 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  WidgetsFlutterBinding.ensureInitialized ();
+import 'screens/welcomescreen.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
-  
 }
 
 class MyApp extends StatelessWidget {
-  final _fbApp = Firebase.initializeApp();
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        Provider<AuthenticationSrvice>(
-          create: (_) => AuthenticationSrvice(FirebaseAuth.instance),
-        ),
-        StreamProvider(
-          create: (context) =>
-              context.read<AuthenticationSrvice>().authStateChanges,
-          initialData: null,
-        )
-      ],
-    
-    // ignore: dead_code
-    child : MaterialApp(
-      home: FutureBuilder(
-        future: _fbApp,
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return ErrorScreen();
-          } else if (snapshot.hasData) {
-            return AuthenticationWrapper();
-          } else {
-            return LoadingScreen();
-          }
-        },
-      ),
-      // initialRoute: '/',
-      routes: {
-        // '/': (context) => SplachScreen(),
-        '/Loginscreen': (context) => LoginScreen(),
-        '/signup': (context) => SignupScreen(),
-        '/cart': (context) => CartView(),
-        '/addbook': (context) => AddBook(),
-        '/homescreen': (context) => HomeScreen(),
-        '/drawer': (context) => DrawerScreen(),
-        '/profilepage': (context) => ProfilePage()
-      },
-      onGenerateRoute: (settings) {
-        if (settings.name == PassArgumentsScreen.routeName) {
-          final args = settings.arguments as ScreenArguments;
-          return MaterialPageRoute(
-            builder: (context) {
-              return PassArgumentsScreen(
-                title: args.title,
-                message: args.message,
+        providers: [
+          ChangeNotifierProvider<AuthenticationSrvice>(
+            create: (_) => AuthenticationSrvice(),
+          ),
+          StreamProvider(
+            create: (context) =>
+                context.read<AuthenticationSrvice>().authStateChanges,
+            initialData: null,
+          )
+        ],
+
+        // ignore: dead_code
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: SplashScreen(duration: 3, goToPage: WelcomeScreen()),
+          // initialRoute: '/',
+          routes: {
+            '/Loginscreen': (context) => LoginScreen(),
+            '/signup': (context) => SignupScreen(),
+            '/cart': (context) => CartView(),
+            '/addbook': (context) => AddBook(),
+            '/homescreen': (context) => HomeScreen(),
+            '/drawer': (context) => DrawerScreen(),
+            '/profilepage': (context) => ProfilePage()
+          },
+          onGenerateRoute: (settings) {
+            if (settings.name == PassArgumentsScreen.routeName) {
+              final args = settings.arguments as ScreenArguments;
+              return MaterialPageRoute(
+                builder: (context) {
+                  return PassArgumentsScreen(
+                    title: args.title,
+                    message: args.message,
+                  );
+                },
               );
-            },
-          );
-        }
-        assert(false, 'Need to implement ${settings.name}');
-        return null;
-      },
-    )
-    );
+            }
+            assert(false, 'Need to implement ${settings.name}');
+            return null;
+          },
+        ));
   }
 }
 

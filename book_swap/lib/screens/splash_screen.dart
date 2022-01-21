@@ -1,42 +1,25 @@
-import 'dart:async';
-
+import 'package:book_swap/helpers/appcolors.dart';
+import 'package:book_swap/screens/welcomescreen.dart';
 import 'package:flutter/material.dart';
-import 'package:book_swap/screens/login_screen.dart';
 
-class SplachScreen extends StatefulWidget {
-  SplachScreen({Key? key}) : super(key: key);
+import 'login_screen.dart';
 
-  @override
-  _SplachScreenState createState() => _SplachScreenState();
-}
+class SplashScreen extends StatelessWidget {
+  int duration = 0;
+  Widget goToPage;
 
-class _SplachScreenState extends State<SplachScreen> {
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    Timer(Duration(seconds: 3), () {
-      Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (_) => LoginScreen()));
-    });
-  }
-
+  SplashScreen({required this.goToPage, required this.duration});
   @override
   Widget build(BuildContext context) {
+    Future.delayed(Duration(seconds: this.duration), () {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) =>WelcomeScreen()));
+    });
     return Scaffold(
-      backgroundColor: Colors.deepOrange.shade100,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              'assets/images/bookswap.png',
-            ),
-            SizedBox(
-              height: 20,
-            ),
-          ],
-        ),
+      body: Container(
+        color: AppColors.Main_color,
+        alignment: Alignment.center,
+        child: Image.asset('assets/images/bookswap.png'),
       ),
     );
   }
