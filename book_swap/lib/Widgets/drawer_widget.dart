@@ -1,56 +1,77 @@
+import 'package:book_swap/screens/welcomescreen.dart';
+import 'package:book_swap/services/authentication_services.dart';
 import 'package:flutter/material.dart';
-import 'dart:math';
+import 'package:provider/provider.dart';
 
 class DrawerWidget extends StatefulWidget {
-  Widget child = Container();
-  DrawerWidget({Key? key, required this.child}) : super(key: key);
+  const DrawerWidget({Key? key}) : super(key: key);
 
   @override
-  State<DrawerWidget> createState() => _DrawerWidgetState(child: child);
+  State<DrawerWidget> createState() => _DrawerWidgetState();
 }
 
 class _DrawerWidgetState extends State<DrawerWidget> {
-  Widget child = Container();
-  _DrawerWidgetState({required this.child});
   @override
   Widget build(BuildContext context) {
     bool value = false;
 
-    return Scaffold(
-      body: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(colors: [
-                Colors.blue,
-                Colors.lightBlue,
-              ], begin: Alignment.bottomCenter, end: Alignment.topCenter),
+    return Consumer<AuthenticationSrvice>(builder: (context, authProvider, _) {
+      return Drawer(
+        child: SafeArea(
+          child: Container(
+            padding: const EdgeInsets.all(8.0),
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.blue,
+                  Colors.lightBlue,
+                ],
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
+              ),
             ),
-          ),
-          SafeArea(
-              child: Container(
-            width: 200,
-            padding: EdgeInsets.all(8.0),
             child: Column(
               children: [
                 DrawerHeader(
-                    child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                      radius: 50.0,
-                      backgroundImage:
-                          NetworkImage("https://picsum.photos/250?image=9"),
-                    ),
-                    SizedBox(
-                      height: 10.0,
-                    ),
-                    Text(
-                      "Sandy Elias ",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                  ],
-                )),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      authProvider.userModel!.avatar != ''
+                          ? CircleAvatar(
+                              radius: 50.0,
+                              backgroundImage: NetworkImage(
+                                authProvider.userModel!.avatar as String,
+                              ),
+                            )
+                          : Container(
+                              width: 90,
+                              height: 90,
+                              decoration: BoxDecoration(
+                                color: Colors.grey[200],
+                                borderRadius: BorderRadius.circular(100),
+                              ),
+                              child: Icon(
+                                Icons.person,
+                                size: 60,
+                                color: Colors.red[300],
+                              ),
+                            ),
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                      Text(
+                        authProvider.userModel!.firstName.toString() +
+                            ' ' +
+                            authProvider.userModel!.lastName.toString(),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 Expanded(
                     child: ListView(
                   children: [
@@ -88,7 +109,11 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                       ),
                     ),
                     ListTile(
-                      onTap: () {},
+                      onTap: () => authProvider.signOut().then((value) {
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (_) => WelcomeScreen()),
+                        );
+                      }),
                       leading: Icon(
                         Icons.logout,
                         color: Colors.white,
@@ -102,48 +127,9 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                 ))
               ],
             ),
-          )),
-          TweenAnimationBuilder(
-              tween: Tween<double>(begin: 0, end: (value ? 1 : 0)),
-              duration: Duration(milliseconds: 600),
-              builder: (_, double val, __) {
-                return (Transform(
-                    alignment: Alignment.center,
-                    transform: Matrix4.identity()
-                      ..setEntry(3, 2, 0.001)
-                      ..setEntry(0, 3, 200 * val)
-                      ..rotateY((pi / 6) * val),
-                    child: Scaffold(
-                      appBar: AppBar(
-                        title: Text("Drawer Menu"),
-                        leading: IconButton(
-                          icon: Icon(Icons.ac_unit),
-                          onPressed: () {
-                            setState(() {
-                              value = !value;
-                            });
-                          },
-                        ),
-                      ),
-                      body: child,
-                    )));
-              }),
-          //      GestureDetector(
-
-          //       onPanStart: ,
-
-          //  //   onHorizontalDragUpdate: (e) {
-          //    //if(e.delta.dx>0){
-          //      //setState(() {
-          //        //value=0;
-          //      //});
-          //    //}
-
-          //     //},
-
-          //      )
-        ],
-      ),
-    );
+          ),
+        ),
+      );
+    });
   }
 }

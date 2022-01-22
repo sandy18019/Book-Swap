@@ -1,10 +1,9 @@
 import 'package:book_swap/Widgets/all_books.dart';
-import 'package:book_swap/Widgets/home_heading.dart';
+import 'package:book_swap/Widgets/drawer_widget.dart';
 import 'package:book_swap/Widgets/home_new_books.dart';
 import 'package:book_swap/Widgets/search_bar.dart';
-import 'package:book_swap/models/loginuser.dart';
+import 'package:book_swap/helpers/appcolors.dart';
 import 'package:book_swap/models/signup.dart';
-import 'package:book_swap/models/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -16,47 +15,39 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   User? user = FirebaseAuth.instance.currentUser;
-  usermodel LoggedInUser = usermodel();
-
-  void initState() {
-    super.initState();
-    FirebaseFirestore.instance
-        .collection("users")
-        .doc(user!.uid)
-        .get()
-        .then((value) {
-      this.LoggedInUser = usermodel.fromMap(value.data());
-      setState(() {});
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const DrawerWidget(),
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        iconTheme: const IconThemeData(color: Colors.deepOrange),
+      ),
       body: SafeArea(
         child: ListView(
           physics: BouncingScrollPhysics(),
           children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(left: 25, top: 25),
-              child:Text(
-                  'hello ${LoggedInUser.firstName}${LoggedInUser.firstName}',
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: 'RacingSansOne',
-                      color: Colors.grey),
-                ),
-            ),
+            // Padding(
+            //   padding: EdgeInsets.only(left: 25, top: 25),
+            //   child: Text(
+            //     'hello ${LoggedInUser.firstName}${LoggedInUser.firstName}',
+            //     style: TextStyle(
+            //         fontSize: 14,
+            //         fontWeight: FontWeight.w600,
+            //         fontFamily: 'RacingSansOne',
+            //         color: Colors.grey),
+            //   ),
+            // ),
             Padding(
               padding: EdgeInsets.only(left: 25),
-              child:Text(
-                  'Main Library',
-                  style: TextStyle(
-                      fontSize: 22,
-                      fontFamily: 'RacingSansOne',
-                      color: Colors.black),
-                ),
+              child: Text(
+                'Main Library',
+                style: TextStyle(
+                    fontSize: 22,
+                    fontFamily: 'RacingSansOne',
+                    color: Colors.black),
+              ),
             ),
             searchBar(),
             Padding(
@@ -70,8 +61,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-            newBooks(),
-            Padding(
+            NewBooks(),
+            const Padding(
               padding: EdgeInsets.only(left: 25, top: 25),
               child: Text(
                 'All Books',
@@ -81,26 +72,17 @@ class _HomeScreenState extends State<HomeScreen> {
                     fontFamily: 'RacingSansOne'),
               ),
             ),
-            menu(),
-            Container(
-              margin: EdgeInsets.only(left: 25, right: 25, bottom: 25),
-              height: 50,
-              color: Colors.transparent,
-              child: RawMaterialButton(
-                fillColor: Colors.deepOrange.shade200,
-                onPressed: () {
-                  Navigator.pushNamed(context, '/addbook');
-                },
-                child: Text(
-                  'Add book',
-                  style: TextStyle(
-                      fontSize: 14, fontWeight: FontWeight.w600, color: Colors.black),
-                ),
-                shape:
-                    RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              ),
-            ),
+            AllBooks(),
           ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () => Navigator.pushNamed(context, '/addbook'),
+        backgroundColor: AppColors.Main_color,
+        label: Text(
+          'Add book',
+          style: TextStyle(
+              fontSize: 14, fontWeight: FontWeight.w600, color: Colors.black),
         ),
       ),
     );
