@@ -1,11 +1,12 @@
 import 'package:book_swap/helpers/appcolors.dart';
 import 'package:book_swap/screens/signup_screen.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'login_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,11 +15,14 @@ class WelcomeScreen extends StatelessWidget {
         child: Stack(
           children: [
             Positioned.fill(
-                child: Opacity(
-              opacity: 0.3,
-              child: Image.asset('assets/images/background.jpg',
-                  fit: BoxFit.cover),
-            )),
+              child: Opacity(
+                opacity: 0.3,
+                child: Image.asset(
+                  'assets/images/background.jpg',
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
             Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -27,11 +31,12 @@ class WelcomeScreen extends StatelessWidget {
                   Center(
                     child: ClipOval(
                       child: Container(
-                          width: 180,
-                          height: 180,
-                          color: AppColors.Main_color,
-                          alignment: Alignment.center,
-                          child: Image.asset('assets/images/bookswap.png')),
+                        width: 180,
+                        height: 180,
+                        color: AppColors.Main_color,
+                        alignment: Alignment.center,
+                        child: Image.asset('assets/images/bookswap.png'),
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -54,21 +59,22 @@ class WelcomeScreen extends StatelessWidget {
                     child: FlatButton(
                       onPressed: () {
                         Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SignupScreen()),
-                        );
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SignupScreen()));
                       },
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50)),
+                        borderRadius: BorderRadius.circular(50),
+                      ),
                       color: AppColors.Main_color,
                       padding: EdgeInsets.all(25),
                       child: Text(
                         'Create your account now!',
                         style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold),
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),

@@ -7,7 +7,7 @@ import 'package:book_swap/screens/extract_arguments.dart';
 import 'package:book_swap/screens/home_screen.dart';
 import 'package:book_swap/screens/login_screen.dart';
 import 'package:book_swap/screens/signup_screen.dart';
-import 'package:book_swap/screens/welcome_screen.dart';
+import 'package:book_swap/screens/welcomescreen.dart';
 import 'package:book_swap/services/authentication_services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
