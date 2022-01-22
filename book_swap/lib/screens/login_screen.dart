@@ -1,7 +1,6 @@
 import 'package:book_swap/Widgets/login_form.dart';
 import 'package:flutter/material.dart';
 
-
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -13,16 +12,24 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
       body: Container(
         color: Colors.black,
         child: Stack(
           children: [
             Positioned.fill(
-                child: Opacity(
-              opacity: 0.3,
-              child: Image.asset('assets/images/background.jpg',
-                  fit: BoxFit.cover),
-            )),
+              child: Opacity(
+                opacity: 0.3,
+                child: Image.asset(
+                  'assets/images/background.jpg',
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
             Center(
               child: SingleChildScrollView(
                 child: Column(
@@ -52,29 +59,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     const SizedBox(height: 70),
                     LoginForm(),
-                    GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(context, '/signup');
-                        },
-                        child: Column(
-                          // ignore: prefer_const_literals_to_create_immutables
-                          children: [
-                            const Text(
-                              "New to BookSwap?",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            const Text(
-                              " Create your account now",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ))
                   ],
                 ),
               ),

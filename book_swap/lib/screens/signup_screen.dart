@@ -1,6 +1,5 @@
-import 'package:book_swap/screens/login_screen.dart';
-import 'package:flutter/material.dart';
 import 'package:book_swap/Widgets/signup_form.dart';
+import 'package:flutter/material.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
@@ -12,18 +11,10 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            color: Colors.black,
-          ),
-          onPressed: () {
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
-          },
-        ),
       ),
       body: Container(
         color: Colors.black,

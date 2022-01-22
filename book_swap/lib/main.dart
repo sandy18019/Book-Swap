@@ -1,21 +1,18 @@
-import 'package:book_swap/screens/LoadingScreen.dart';
-import 'package:book_swap/screens/errorscreen.dart';
-import 'package:book_swap/screens/extract_arguments.dart';
-import 'package:book_swap/screens/profile_page.dart';
-import 'package:book_swap/screens/addbook_screen.dart';
-import 'package:book_swap/screens/cart_screen.dart';
+import 'package:book_swap/screens/addBook/add_book_provider.dart';
+import 'package:book_swap/screens/addBook/addbook_screen.dart';
+import 'package:book_swap/screens/cart/cart_provider.dart';
+import 'package:book_swap/screens/cart/cart_screen.dart';
 import 'package:book_swap/screens/drawer_screen.dart';
+import 'package:book_swap/screens/extract_arguments.dart';
 import 'package:book_swap/screens/home_screen.dart';
 import 'package:book_swap/screens/login_screen.dart';
 import 'package:book_swap/screens/signup_screen.dart';
-import 'package:book_swap/screens/splash_screen.dart';
+import 'package:book_swap/screens/welcome_screen.dart';
 import 'package:book_swap/services/authentication_services.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
-import 'screens/welcomescreen.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,28 +23,33 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser;
+
     return MultiProvider(
         providers: [
           ChangeNotifierProvider<AuthenticationSrvice>(
             create: (_) => AuthenticationSrvice(),
           ),
-          StreamProvider(
-            create: (context) =>
-                context.read<AuthenticationSrvice>().authStateChanges,
-            initialData: null,
-          )
+          ChangeNotifierProvider<AddBookProvider>(
+            create: (_) => AddBookProvider(),
+          ),
+          ChangeNotifierProvider<CartProvider>(
+            create: (_) => CartProvider(),
+          ),
         ],
-
-        // ignore: dead_code
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: SplashScreen(duration: 3, goToPage: WelcomeScreen()),
+          // home: SplashScreen(
+          //   duration: 3,
+          //   goToPage: user != null ? HomeScreen() : const WelcomeScreen(),
+          // ),
+          home: user != null ? HomeScreen() : const WelcomeScreen(),
           // initialRoute: '/',
           routes: {
             '/Loginscreen': (context) => LoginScreen(),
             '/signup': (context) => SignupScreen(),
             '/cart': (context) => CartView(),
-            '/addbook': (context) => AddBook(),
+            '/addbook': (context) => AddBookPage(),
             '/homescreen': (context) => HomeScreen(),
             '/drawer': (context) => DrawerScreen(),
             // '/profilepage': (context) => ProfilePage()
