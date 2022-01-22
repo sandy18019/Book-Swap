@@ -7,6 +7,12 @@ import 'package:flutter/foundation.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class AuthenticationSrvice with ChangeNotifier {
+  AuthenticationSrvice() {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      getUserModel();
+    }
+  }
   FirebaseAuth auth = FirebaseAuth.instance;
   final fireStoreInstance = FirebaseFirestore.instance;
   bool isLoadingSignUp = false;

@@ -1,3 +1,4 @@
+import 'package:book_swap/screens/cart/cart_screen.dart';
 import 'package:book_swap/screens/welcomescreen.dart';
 import 'package:book_swap/services/authentication_services.dart';
 import 'package:flutter/material.dart';
@@ -93,13 +94,17 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                       ),
                     ),
                     ListTile(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder: (_) => const CartView()),
+                        );
+                      },
                       leading: Icon(
-                        Icons.settings,
+                        Icons.shopping_cart,
                         color: Colors.white,
                       ),
                       title: Text(
-                        "Settings",
+                        "cart",
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
