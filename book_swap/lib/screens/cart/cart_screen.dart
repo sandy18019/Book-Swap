@@ -177,7 +177,10 @@ class _CartViewState extends State<CartView> {
                               foregroundColor: MaterialStateProperty.all<Color>(
                                   Colors.black),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              print("The Owner Will contact you shortly");
+                              Navigator.pushNamed(context, '/homescreen');
+                            },
                             child: Text('CHECKOUT'),
                           ),
                         ),

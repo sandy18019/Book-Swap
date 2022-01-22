@@ -28,17 +28,6 @@ class _HomeScreenState extends State<HomeScreen> {
         child: ListView(
           physics: BouncingScrollPhysics(),
           children: <Widget>[
-            // Padding(
-            //   padding: EdgeInsets.only(left: 25, top: 25),
-            //   child: Text(
-            //     'hello ${LoggedInUser.firstName}${LoggedInUser.firstName}',
-            //     style: TextStyle(
-            //         fontSize: 14,
-            //         fontWeight: FontWeight.w600,
-            //         fontFamily: 'RacingSansOne',
-            //         color: Colors.grey),
-            //   ),
-            // ),
             Padding(
               padding: EdgeInsets.only(left: 25),
               child: Text(

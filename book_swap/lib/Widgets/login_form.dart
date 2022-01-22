@@ -45,6 +45,7 @@ class _LoginFormState extends State<LoginForm> {
                 return null;
               },
               onSaved: (value) => emailController.text = value!,
+              textInputAction: TextInputAction.next,
               decoration: InputDecoration(
                   hintText: "Email ",
                   suffixIcon: Icon(Icons.mail),
@@ -69,9 +70,8 @@ class _LoginFormState extends State<LoginForm> {
                 }
                 return null;
               },
-              onSaved: (value) {
-                passwordController.text = value!;
-              },
+              onSaved: (value) => passwordController.text = value!,
+              textInputAction: TextInputAction.done,
               obscureText: _showPassword,
               decoration: InputDecoration(
                   hintText: "Password",

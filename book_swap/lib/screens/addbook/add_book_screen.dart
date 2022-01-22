@@ -109,6 +109,7 @@ class _AddBookPageState extends State<AddBookPage> {
                       }
                       return null;
                     },
+                    textInputAction: TextInputAction.next,
                     decoration: InputDecoration(
                       labelText: 'Book Name',
                       hintStyle: TextStyle(
@@ -125,6 +126,7 @@ class _AddBookPageState extends State<AddBookPage> {
                       }
                       return null;
                     },
+                    textInputAction: TextInputAction.next,
                     decoration: InputDecoration(
                       labelText: 'Price',
                       hintStyle: TextStyle(
@@ -141,6 +143,7 @@ class _AddBookPageState extends State<AddBookPage> {
                       }
                       return null;
                     },
+                    textInputAction: TextInputAction.next,
                     decoration: InputDecoration(
                       labelText: 'Description',
                       hintStyle: TextStyle(
@@ -157,6 +160,7 @@ class _AddBookPageState extends State<AddBookPage> {
                       }
                       return null;
                     },
+                    textInputAction: TextInputAction.done,
                     decoration: InputDecoration(
                       labelText: 'Author',
                       hintStyle: TextStyle(

@@ -47,9 +47,8 @@ class _SignUpFormState extends State<SignUpForm> {
                   }
                   return null;
                 },
-                onSaved: (value) {
-                  firstNameController.text = value!;
-                },
+                onSaved: (value) => firstNameController.text = value!,
+                textInputAction: TextInputAction.next,
                 decoration: InputDecoration(
                     hintText: "Your first name ",
                     prefixIcon: Icon(Icons.account_circle),
@@ -68,9 +67,8 @@ class _SignUpFormState extends State<SignUpForm> {
                   }
                   return null;
                 },
-                onSaved: (value) {
-                  lastNameController.text = value!;
-                },
+                onSaved: (value) => lastNameController.text = value!,
+                textInputAction: TextInputAction.next,
                 decoration: InputDecoration(
                     hintText: "Your last name ",
                     prefixIcon: Icon(Icons.account_circle),
@@ -93,9 +91,8 @@ class _SignUpFormState extends State<SignUpForm> {
                   }
                   return null;
                 },
-                onSaved: (value) {
-                  emailController.text = value!;
-                },
+                onSaved: (value) => emailController.text = value!,
+                textInputAction: TextInputAction.next,
                 decoration: InputDecoration(
                     hintText: "Email ",
                     prefixIcon: Icon(Icons.mail),
@@ -118,10 +115,9 @@ class _SignUpFormState extends State<SignUpForm> {
                   }
                   return null;
                 },
-                onSaved: (value) {
-                  passwordController.text = value!;
-                },
+                onSaved: (value) => passwordController.text = value!,
                 obscureText: _showPassword,
+                textInputAction: TextInputAction.next,
                 decoration: InputDecoration(
                     hintText: "Enter your Password",
                     suffixIcon: IconButton(
@@ -151,6 +147,7 @@ class _SignUpFormState extends State<SignUpForm> {
                 },
                 onSaved: (value) => confirmPasswordController.text = value!,
                 obscureText: _showPassword,
+                textInputAction: TextInputAction.done,
                 decoration: InputDecoration(
                     hintText: "Re-enter your Password",
                     suffixIcon: IconButton(
