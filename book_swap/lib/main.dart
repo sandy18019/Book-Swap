@@ -7,6 +7,7 @@ import 'package:book_swap/screens/extract_arguments.dart';
 import 'package:book_swap/screens/home_screen.dart';
 import 'package:book_swap/screens/login_screen.dart';
 import 'package:book_swap/screens/signup_screen.dart';
+import 'package:book_swap/screens/splash_screen.dart';
 import 'package:book_swap/screens/welcomescreen.dart';
 import 'package:book_swap/services/authentication_services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -39,11 +40,11 @@ class MyApp extends StatelessWidget {
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          // home: SplashScreen(
-          //   duration: 3,
-          //   goToPage: user != null ? HomeScreen() : const WelcomeScreen(),
-          // ),
-          home: user != null ? HomeScreen() : const WelcomeScreen(),
+          home: SplashScreen(
+            duration: 3,
+            goToPage: user != null ? HomeScreen() : const WelcomeScreen(),
+          ),
+          // home: user != null ? HomeScreen() : const WelcomeScreen(),
           // initialRoute: '/',
           routes: {
             '/Loginscreen': (context) => LoginScreen(),
@@ -51,7 +52,7 @@ class MyApp extends StatelessWidget {
             '/cart': (context) => CartView(),
             '/addbook': (context) => AddBookPage(),
             '/homescreen': (context) => HomeScreen(),
-            '/drawer': (context) => DrawerScreen(),
+            // '/drawer': (context) => DrawerScreen(),
             // '/profilepage': (context) => ProfilePage()
           },
           onGenerateRoute: (settings) {

@@ -119,6 +119,12 @@ class _AddBookPageState extends State<AddBookPage> {
                   ),
                   TextFormField(
                     controller: _priceController,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return ('PLEASE enter A price');
+                      }
+                      return null;
+                    },
                     decoration: InputDecoration(
                       labelText: 'Price',
                       hintStyle: TextStyle(
@@ -129,6 +135,12 @@ class _AddBookPageState extends State<AddBookPage> {
                   ),
                   TextFormField(
                     controller: _descriptionController,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return ('PLEASE enter the description');
+                      }
+                      return null;
+                    },
                     decoration: InputDecoration(
                       labelText: 'Description',
                       hintStyle: TextStyle(
@@ -139,6 +151,12 @@ class _AddBookPageState extends State<AddBookPage> {
                   ),
                   TextFormField(
                     controller: _authorController,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return ('PLEASE enterthe name of the author');
+                      }
+                      return null;
+                    },
                     decoration: InputDecoration(
                       labelText: 'Author',
                       hintStyle: TextStyle(

@@ -18,17 +18,12 @@ class _DrawerWidgetState extends State<DrawerWidget> {
     return Consumer<AuthenticationSrvice>(builder: (context, authProvider, _) {
       return Drawer(
         child: SafeArea(
-          child: Container(
-            padding: const EdgeInsets.all(8.0),
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Colors.blue,
-                  Colors.lightBlue,
-                ],
-                begin: Alignment.bottomCenter,
-                end: Alignment.topCenter,
-              ),
+          child: Container(decoration: BoxDecoration(
+              // gradient: LinearGradient(
+                color: Colors.deepOrange.shade100,
+                // begin: Alignment.bottomCenter,
+                // end: Alignment.topCenter,
+              // ),
             ),
             child: Column(
               children: [
@@ -37,7 +32,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      authProvider.userModel!.avatar != ''
+                      authProvider.userModel!.avatar != ' '
                           ? CircleAvatar(
                               radius: 50.0,
                               backgroundImage: NetworkImage(
