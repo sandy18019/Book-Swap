@@ -1,5 +1,6 @@
 import 'package:book_swap/models/book_model.dart';
 import 'package:book_swap/screens/cart/cart_provider.dart';
+import 'package:book_swap/services/authentication_services.dart';
 import 'package:book_swap/utils/ref.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class SelectedBookScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<CartProvider>(builder: (context, cartProvider, _) {
+    return Consumer<AuthenticationSrvice>(builder: (context, authProvider, _) {
       return Scaffold(
         body: FutureBuilder<DocumentSnapshot<BookModel>>(
           future: booksFirestoreRef.doc(bookId).get(),
@@ -140,9 +141,7 @@ class SelectedBookScreen extends StatelessWidget {
           child: RawMaterialButton(
             fillColor: Colors.deepOrange.shade200,
             onPressed: () {
-              cartProvider
-                  .addToUserCart(bookId: bookId, context: context)
-                  .then((value) {
+              authProvider.addToUserCart(bookId: bookId).then((value) {
                 Navigator.pushNamed(context, '/cart');
               });
             },

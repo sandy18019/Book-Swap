@@ -125,4 +125,21 @@ class AuthenticationSrvice with ChangeNotifier {
       notifyListeners();
     }).catchError((error) => print("Failed to add book: $error"));
   }
+
+  Future<void> addToUserCart({
+    required String bookId,
+  }) {
+    final user = FirebaseAuth.instance.currentUser;
+
+    return userFirestore
+        .doc(user!.uid)
+        .update(
+          {
+            'cartList': FieldValue.arrayUnion([bookId]),
+          },
+        )
+        .then((value) => print("book added to cart"))
+        .then((value) => getUserModel())
+        .catchError((error) => print("Failed to add Book: $error"));
+  }
 }

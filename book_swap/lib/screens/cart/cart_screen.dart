@@ -21,8 +21,8 @@ class _CartViewState extends State<CartView> {
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
 
-    return Consumer2<CartProvider, AuthenticationSrvice>(
-        builder: (context, cartProvider, authProvider, _) {
+    return Consumer<AuthenticationSrvice>(
+        builder: (context, authProvider, _) {
       return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.deepOrange.shade200,
