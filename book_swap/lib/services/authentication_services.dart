@@ -142,4 +142,20 @@ class AuthenticationSrvice with ChangeNotifier {
         .then((value) => getUserModel())
         .catchError((error) => print("Failed to add Book: $error"));
   }
+
+  Future<void> emptyCart() {
+    final user = FirebaseAuth.instance.currentUser;
+
+    return userFirestore
+        .doc(user!.uid)
+        .update(
+          {
+            'cartList': [],
+          },
+        )
+        .then((value) => print("Checkout"))
+        .then((value) => getUserModel())
+        .catchError((error) => print("Failed to empty cart: $error"));
+  }
+  //TODO: emptyCart function
 }
