@@ -157,5 +157,4 @@ class AuthenticationSrvice with ChangeNotifier {
         .then((value) => getUserModel())
         .catchError((error) => print("Failed to empty cart: $error"));
   }
-  //TODO: emptyCart function
 }

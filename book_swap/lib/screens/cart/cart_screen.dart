@@ -21,8 +21,7 @@ class _CartViewState extends State<CartView> {
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
 
-    return Consumer<AuthenticationSrvice>(
-        builder: (context, authProvider, _) {
+    return Consumer<AuthenticationSrvice>(builder: (context, authProvider, _) {
       return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.deepOrange.shade200,
@@ -178,6 +177,7 @@ class _CartViewState extends State<CartView> {
                                   Colors.black),
                             ),
                             onPressed: () {
+                              authProvider.emptyCart();
                               print("The Owner Will contact you shortly");
                               Navigator.pushNamed(context, '/homescreen');
                             },
